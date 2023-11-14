@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: QuizScreen(),
     );
   }
 }
 
 class QuizScreen extends StatefulWidget {
+  const QuizScreen({super.key});
+
   @override
   _QuizScreenState createState() => _QuizScreenState();
 }
@@ -68,7 +72,7 @@ class _QuizScreenState extends State<QuizScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Movie Quiz App'),
+        title: const Text('Movie Quiz App'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -83,14 +87,14 @@ class _QuizScreenState extends State<QuizScreen> {
               width: 200,
             )
                 : Container(),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Question
             Text(
               questions[currentQuestionIndex]['question'] as String,
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Answers
             ...(questions[currentQuestionIndex]['answers'] as List<String>).map((answer) {
@@ -119,7 +123,7 @@ class _QuizScreenState extends State<QuizScreen> {
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(Colors.indigo),
               ),
-              child: Text('Next Question'),
+              child: const Text('Next Question'),
             ),
           ],
         ),
@@ -132,7 +136,7 @@ class AnswerButton extends StatelessWidget {
   final String answerText;
   final VoidCallback onPressed;
 
-  AnswerButton({required this.answerText, required this.onPressed});
+  const AnswerButton({super.key, required this.answerText, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -150,23 +154,23 @@ class ScoreScreen extends StatelessWidget {
   final int score;
   final VoidCallback onReset;
 
-  ScoreScreen({required this.score, required this.onReset});
+  const ScoreScreen({super.key, required this.score, required this.onReset});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Quiz Results'),
+        title: const Text('Quiz Results'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Your Score: $score'),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: onReset,
-              child: Text('Restart Quiz'),
+              child: const Text('Restart Quiz'),
             ),
           ],
         ),
